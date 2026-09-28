@@ -1,4 +1,6 @@
-﻿int lessonNum = 1;
+﻿using System.Reflection.Emit;
+
+int lessonNum = 1;
 int totalLessons = 5;
 
 while (totalLessons >= lessonNum) {
@@ -154,3 +156,44 @@ while (popitki < 3 && !isValid)
 }
 
 if (popitki >= 3 && !isValid) Console.WriteLine("Доступ заблокирован");
+
+// Дополнительное задание
+
+int correctPin = 1487;
+int popitkiDop = 0;
+bool validPin = false;
+int sumSnatie = 0;
+
+Console.Write("Enter pin: ");
+
+int enteredPin = int.Parse(Console.ReadLine());
+
+while (popitkiDop != 3 && !validPin)
+{
+    if (enteredPin == correctPin)
+    {
+        validPin = true;
+        goto PIN_CORRECT;
+    }
+    Console.WriteLine("incorrect pin! try again");
+    popitkiDop++;
+    if (popitkiDop != 3) enteredPin = int.Parse(Console.ReadLine());
+}
+
+if (popitkiDop == 3 && !validPin)
+{
+    Console.WriteLine("Карта заблокирована");
+    return;
+}
+
+PIN_CORRECT:
+Console.Write("введите сумму снятия: ");
+int sumSnat = int.Parse(Console.ReadLine());
+
+while (sumSnat != 0)
+{
+    sumSnatie += sumSnat;
+    sumSnat = int.Parse(Console.ReadLine());
+}
+
+Console.WriteLine($"Сумма снятия: {sumSnatie}");
