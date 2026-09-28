@@ -57,3 +57,100 @@ while (true)
     Console.WriteLine("incorrect password! try again");
     incorrectPswdCnt++;
 }
+
+string answer;
+
+do
+{
+    Console.Write("enter date: ");
+    string date = Console.ReadLine();
+    Console.WriteLine($"date {date} added!");
+
+    Console.Write("again? (y/n): ");
+    answer = Console.ReadLine();
+} while (answer == "y");
+
+Console.WriteLine("dnevnik saved");
+
+// Самостоятельные задания
+
+// A
+
+int N = 5;
+int da = 1;
+
+while (da <= 10)
+{
+    Console.WriteLine($"{N} x {da} = {N * da}");
+    da++;
+}
+
+// Б
+
+int namesCnt = 0;
+
+Console.Write("Enter names: ");
+string name = Console.ReadLine();
+
+while (name != "конец")
+{
+    namesCnt++;
+    name = Console.ReadLine();
+}
+
+Console.WriteLine($"names cnt: {namesCnt}");
+
+// Индивидуальный вариант
+
+/*Console.Write("famil: ");
+string surname = Console.ReadLine()!.Trim();
+
+if (string.IsNullOrEmpty(surname))
+{
+    Console.WriteLine("not surname!");
+    return;
+}
+
+Random rnd = new(surname.GetHashCode() + DateTime.Now.DayOfYear);
+
+var assigned = Enumerable.Range(1, 10).OrderBy(_ => rnd.Next()).Take(2).OrderBy(x => x).ToList();
+
+Console.WriteLine($"tasks: {assigned[0]} and {assigned[1]}");*/
+
+//4 8
+
+int symbolCnt = 0;
+
+Console.Write("Enter symbol: ");
+string symbol = Console.ReadLine();
+
+while (symbol != "q")
+{
+    symbolCnt++;
+    symbol = Console.ReadLine();
+}
+
+Console.WriteLine($"symbols cnt: {symbolCnt}");
+
+bool isValid = false;
+string pass = "test";
+int popitki = 0;
+
+Console.Write("enter password: ");
+string passw = Console.ReadLine();
+
+while (popitki < 3 && !isValid)
+{
+    if (passw == pass)
+    {
+        Console.WriteLine("Доступ разрешён");
+        isValid = true;
+        break;
+    }
+
+    Console.WriteLine("неверный пароль! попробуй еще раз");
+    popitki++;
+    if (popitki != 3) passw = Console.ReadLine();
+}
+
+if (popitki >= 3 && !isValid) Console.WriteLine("Доступ заблокирован");
